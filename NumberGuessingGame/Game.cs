@@ -28,24 +28,24 @@ namespace NumberGuessingGame
 
                 int tries = 0;
 
-                Console.WriteLine("Ich habe mir eine Zahl zwischen " + min + " und " + max + " ausgedacht.");
-                Console.WriteLine("Versuchen Sie, sie zu erraten!");
+                Console.WriteLine("I have chosen a number between " + min + " and " + max + ".");
+                Console.WriteLine("Try to guess it!");
                 Console.WriteLine();
 
                 while (true)
                 {
-                    Console.Write("Dein Tipp: ");
+                    Console.Write("Your guess ");
                     string? input = Console.ReadLine();
 
                     if (!int.TryParse(input, out int guess))
                     {
-                        Console.WriteLine("Bitte geben Sie eine gültige Zahl ein.");
+                        Console.WriteLine("Please enter a valid number");
                         continue;
                     }
 
                     if (guess < min || guess > max)
                     {
-                        Console.WriteLine("Bitte geben Sie eine Zahl innerhalb des Bereichs ein.");
+                        Console.WriteLine("Please enter a number within the valid range.");
                         continue;
                     }
 
@@ -61,16 +61,16 @@ namespace NumberGuessingGame
                     }
                     else
                     {
-                        Console.WriteLine($"Correct! Du hast {tries} Versuche gebraucht.");
+                        Console.WriteLine($"Correct! You needed {tries} attempts.");
                         break;
                     }
                 }
 
                 Console.WriteLine();
-                Console.Write("Nochmal spielen? (j/n): ");
+                Console.Write("Play again? (j/n): ");
                 string? again = Console.ReadLine();
 
-                if (again == null || again.Trim().ToLower() != "j")
+                if (again == null || again.Trim().ToLower() != "y")
                     break; // zurück ins Hauptmenü
             }
         }

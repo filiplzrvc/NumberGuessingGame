@@ -25,15 +25,15 @@ namespace NumberGuessingGame
                 Console.WriteLine("=== Number Guessing Game ===");
                 Console.WriteLine("Current Range: " + settings.Min + " to " + settings.Max);
                 Console.WriteLine();
-                Console.WriteLine("1) Spiel starten");
-                Console.WriteLine("2) Einstellungen (Bereich ändern)");
-                Console.WriteLine("3) Beenden");
+                Console.WriteLine("1) Start game");
+                Console.WriteLine("2) Settings (change range)");
+                Console.WriteLine("3) Exit");
                 Console.WriteLine();
-                Console.Write("Wählen Sie eine Option: ");
+                Console.Write("Choose an option: ");
 
                 string? choice = Console.ReadLine();
 
-                bool keepRunning = HandleChoice(choice);
+               bool keepRunning = HandleChoice(choice ?? "");
 
                 if (!keepRunning)
                     break;
@@ -52,10 +52,10 @@ namespace NumberGuessingGame
                         settings.ChangeSettings();
                         return true;
                     case "3":
-                        Console.WriteLine("Danke fürs Spielen! Auf Wiedersehen!");
+                        Console.WriteLine("Thanks for playing! Goodbye!");
                         return false;
                 default:
-                    Console.WriteLine("Ungültige Auswahl. Bitte versuchen Sie es erneut.");
+                    Console.WriteLine("Invalid selection. Please try again.");
                     Console.ReadKey();
                     return true;
             }

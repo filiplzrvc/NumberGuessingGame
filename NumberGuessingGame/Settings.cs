@@ -20,25 +20,25 @@ namespace NumberGuessingGame
         public void ChangeSettings()
         {
             Console.Clear();
-            Console.WriteLine("=== Einstellungen ===");
-            Console.WriteLine("Hier kannst du den Zahlenbereich ändern.");
+            Console.WriteLine("=== Settings ===");
+            Console.WriteLine("Here you can change the number range.");
             Console.WriteLine();
 
-            int newMin = ReadInt("Neues Minimum: ");
-            int newMax = ReadInt("Neues Maximum: ");
+            int newMin = ReadInt("New minimum: ");
+            int newMax = ReadInt("New maximum: ");
 
             while (newMax <= newMin)
             {
-                Console.WriteLine("Maximum muss größer als Minimum sein.");
-                newMin = ReadInt("Neues Minimum: ");
-                newMax = ReadInt("Neues Maximum: ");
+                Console.WriteLine("Maximum must be greater then minimum.");
+                newMin = ReadInt("New minimum: ");
+                newMax = ReadInt("New maximum: ");
             }
 
             Min = newMin;
             Max = newMax;
 
-            Console.WriteLine($"Gespeichert! Neuer Bereich: {Min} - {Max}");
-            Console.WriteLine("Drücke eine Taste, um ins Menü zurückzukehren...");
+            Console.WriteLine($"Saved! New range: {Min} - {Max}");
+            Console.WriteLine("Press any key to return to the menu...");
             Console.ReadKey();
         }
 
@@ -52,7 +52,7 @@ namespace NumberGuessingGame
                 if (int.TryParse(input, out int value))
                     return value;
 
-                Console.WriteLine("Bitte geben Sie eine gültige Zahl ein.");
+                Console.WriteLine("Please enter a valid number.");
             }
         }
 
