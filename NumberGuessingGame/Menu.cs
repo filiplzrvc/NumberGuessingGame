@@ -10,11 +10,13 @@ namespace NumberGuessingGame
     {
         private Settings settings;
         private Game game;
+        private Stats stats;
 
-        public Menu(Settings settings, Game game)
+        public Menu(Settings settings, Game game, Stats stats)
         {
             this.settings = settings;
             this.game = game;
+            this.stats = stats;
         }
 
         public void Run()
@@ -27,7 +29,8 @@ namespace NumberGuessingGame
                 Console.WriteLine();
                 Console.WriteLine("1) Start game");
                 Console.WriteLine("2) Settings (change range)");
-                Console.WriteLine("3) Exit");
+                Console.WriteLine("3) Show statistics");
+                Console.WriteLine("4) Exit");
                 Console.WriteLine();
                 Console.Write("Choose an option: ");
 
@@ -52,13 +55,27 @@ namespace NumberGuessingGame
                         settings.ChangeSettings();
                         return true;
                     case "3":
+                        ShowStatistics();
+                        return true;
+                    case "4":
                         Console.WriteLine("Thanks for playing! Goodbye!");
                         return false;
                 default:
-                    Console.WriteLine("Invalid selection. Please try again.");
-                    Console.ReadKey();
-                    return true;
+                        Console.WriteLine("Invalid selection. Please try again.");
+                        Console.ReadKey();
+                        return true;
             }
+        }
+
+        private void ShowStatistics()
+        {
+            Console.Clear();
+            Console.WriteLine("=== Statistics ===");
+            Console.WriteLine($"Games Played: {stats.GamesPlayed}");
+            Console.WriteLine($"Best Attempts: {(stats.BestAttempts.HasValue ? stats.BestAttempts.Value.ToString() : "N/A")}");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to return to the menu...");
+            Console.ReadKey();
         }
     }
 }

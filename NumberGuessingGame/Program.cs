@@ -5,8 +5,9 @@
         static void Main(string[] args)
         {
             var settings = new Settings();
-            var game = new Game(settings);
-            var menu = new Menu(settings, game);
+            var stats = new Stats();
+            var game = new Game(settings, stats);
+            var menu = new Menu(settings, game, stats);
 
             menu.Run();
         }

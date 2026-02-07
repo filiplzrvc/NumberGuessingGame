@@ -9,11 +9,13 @@ namespace NumberGuessingGame
     public class Game
     {
         private Settings settings;
+        private Stats stats;
         private Random random = new Random();
 
-        public Game(Settings settings)
+        public Game(Settings settings, Stats stats)
         {
             this.settings = settings;
+            this.stats = stats;
         }
 
         public void Play()
@@ -62,12 +64,13 @@ namespace NumberGuessingGame
                     else
                     {
                         Console.WriteLine($"Correct! You needed {tries} attempts.");
+                        stats.UpdateStats(tries);
                         break;
                     }
                 }
 
                 Console.WriteLine();
-                Console.Write("Play again? (j/n): ");
+                Console.Write("Play again? (y/n): ");
                 string? again = Console.ReadLine();
 
                 if (again == null || again.Trim().ToLower() != "y")
